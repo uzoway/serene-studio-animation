@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <title>Serene Studio | Home</title>
@@ -12,7 +19,42 @@
     <!-- Grid layout overlay -->
     <div class="overlay"></div>
 
-    <h1>hello</h1>
+    <!-- Navigation -->
+    <nav class="navigation">
+      <a href="#" class="navigation__logo">
+        <span class="navigation__logo--text" id="js-slide-up"
+          >serene studio</span
+        >
+      </a>
+
+      <p class="navigation__time">
+        <span class="navigation__time--text" id="js-slide-up"
+          >6:29 AM <span>(We're offline)</span></span
+        >
+      </p>
+
+      <ul class="navigation__list">
+        <li class="navigation__list--item">
+          <a href="#" id="js-slide-up">work</a>
+        </li>
+        <li class="navigation__list--item">
+          <a href="#" id="js-slide-up">about</a>
+        </li>
+        <li class="navigation__list--item">
+          <a href="#" id="js-slide-up">team</a>
+        </li>
+        <li class="navigation__list--item">
+          <a href="#" id="js-slide-up">media</a>
+        </li>
+        <li class="navigation__list--item">
+          <a href="#" id="js-slide-up">contact</a>
+        </li>
+      </ul>
+
+      <button class="navigation__button">
+        <span>menu</span>
+      </button>
+    </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
