@@ -15,6 +15,8 @@
     margin: 0;
     box-sizing: border-box;
     font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
 }
 
 html,
@@ -24,7 +26,6 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     position: relative;
-    font-family: "DM Sans", sans-serif;
 }
 
 /* Hide scrollbar */
@@ -72,14 +73,15 @@ a:focus-visible {
     position: fixed;
     inset: 0 var(--gutter-width);
     background-image: repeating-linear-gradient(to right,
-            #d2d6f9,
-            #d2d6f9 calc((100% / var(--column)) - var(--gutter-width)),
+            hsla(234, 76%, 30%, 0.4),
+            hsla(234, 76%, 30%, 0.4) calc((100% / var(--column)) - var(--gutter-width)),
             transparent calc((100% / var(--column)) - var(--gutter-width)),
             transparent calc(100% / var(--column)));
     background-position: left top;
     background-size: calc(100% + var(--gutter-width)) 100%;
-    z-index: -1;
+    z-index: 3;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .overlay::before,
@@ -204,7 +206,10 @@ body {
 .wrapper__header .row .btns__item {
     overflow: hidden;
     line-height: 0.9;
-    /* background-color: red; */
+}
+
+.wrapper__header .row .btns__item span {
+    color: var(--neutral);
 }
 
 .wrapper__header .row .header__heading span,
@@ -218,12 +223,17 @@ body {
 
 .wrapper__header .row .header__heading .header__heading--text span,
 .wrapper__header .row .btns__item.active span {
-    color: var(--neutral);
+    color: var(--black);
 }
 
 .wrapper__header .row .header__btns {
     display: flex;
     gap: 2vw;
+}
+
+.header__btns .active span,
+.header__btns span {
+    transition: 0.55s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .wrapper .wrapper__content {
