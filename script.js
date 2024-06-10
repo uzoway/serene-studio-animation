@@ -17,6 +17,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Toggle Header content button navigation color
+const headerBtns = document.querySelectorAll(".btns__item");
+
+for (let i = 0; i < headerBtns.length; i++) {
+  headerBtns[i].addEventListener("click", function () {
+    for (let i = 0; i < headerBtns.length; i++) {
+      headerBtns[i].classList.remove("active");
+    }
+    this.classList.add("active");
+  });
+}
+
 // Lenis smooth scroll
 const lenis = new Lenis();
 
