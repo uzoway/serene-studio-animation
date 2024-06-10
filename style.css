@@ -21,9 +21,17 @@ html,
 body {
     width: 100vw;
     min-height: 100svh;
-    overflow-y: clip;
+    overflow: hidden;
+    overflow-y: scroll;
     position: relative;
     font-family: "DM Sans", sans-serif;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 li {
@@ -99,14 +107,22 @@ a:focus-visible {
 
 /* Page styling */
 body {
-    background-color: #f5f2f2;
+    background-color: var(--white);
     padding: var(--gutter-width);
+    overflow: visible;
 }
 
 .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: var(--gutter-width);
     display: grid;
     grid-template-columns: repeat(15, minmax(0, 1fr));
     gap: var(--gutter-width);
+    background-color: var(--white);
+    z-index: 2;
 }
 
 .navigation a,
@@ -152,8 +168,7 @@ body {
 }
 
 .container {
-    --container-header-space: 9vh;
-    margin-top: var(--container-header-space);
+    --container-header-space: 10vh;
 }
 
 .wrapper .wrapper__header {
@@ -162,7 +177,11 @@ body {
     grid-template-columns: repeat(15, minmax(0, 1fr));
     gap: var(--gutter-width);
     position: relative;
-    padding-bottom: var(--container-header-space);
+    padding: var(--container-header-space) 0;
+    background-color: var(--white);
+    position: sticky;
+    top: 1vw;
+    z-index: 1;
 }
 
 .wrapper .wrapper__header::before {
@@ -205,6 +224,54 @@ body {
 .wrapper__header .row .header__btns {
     display: flex;
     gap: 2vw;
+}
+
+.wrapper .wrapper__content {
+    width: 100%;
+}
+
+.wrapper__content .content__row {
+    display: grid;
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+    gap: var(--gutter-width);
+    padding: 1vw 0;
+    border-bottom: 1px solid var(--neutral);
+    align-items: center;
+}
+
+.content__row .row__number,
+.content__row .row__description .description__heading {
+    font-size: clamp(1rem, 1rem + 0.25vw, 1rem);
+}
+
+.content__row .row__description {
+    grid-column: 4 / 7;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+}
+
+.content__row .row__description .description__link {
+    color: var(--neutral);
+    width: fit-content;
+}
+
+.row__description .description__link span {
+    transform: rotate(-45deg);
+    color: var(--neutral);
+    display: inline-block;
+}
+
+.content__row .row__images {
+    grid-column: 10 / 16;
+    display: flex;
+    gap: calc(1.5 * var(--gutter-width));
+}
+
+.content__row .row__images .image__item {
+    width: 10vw;
+    aspect-ratio: 1/0.75;
+    background-color: var(--neutral);
 }
 
 /* Responsive design */
