@@ -317,4 +317,31 @@ body {
         display: flex;
         justify-content: space-between;
     }
+
+    .wrapper__content .content__row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content__row .row__number {
+        display: none;
+    }
+}
+
+@media (max-width: 457px) {
+    :root {
+        --gutter-width: 3vw;
+    }
+
+    .content__row .row__images {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 40%;
+        gap: 2vw;
+    }
+
+    .content__row .row__images .image__item {
+        flex-basis: 47%;
+    }
 }
