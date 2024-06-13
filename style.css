@@ -66,6 +66,12 @@ a:focus-visible {
     outline: 2px solid var(--black);
 }
 
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Grid layout overlay */
 
 .overlay {
@@ -287,12 +293,19 @@ body {
     width: 10vw;
     aspect-ratio: 1/0.75;
     background-color: var(--neutral);
+    overflow: hidden;
+}
+
+.content__row .row__images .image__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .wrapper__content--grid {
     padding-top: var(--gutter-width);
     width: 100%;
-    display: none;
+    /* display: none; */
 }
 
 .wrapper__content--grid .grid__row {
@@ -313,6 +326,7 @@ body {
 .wrapper__content--grid .grid__row .row__item .image {
     background-color: var(--neutral);
     margin-bottom: 1.5vw;
+    overflow: hidden;
 }
 
 /* Row 1 */
