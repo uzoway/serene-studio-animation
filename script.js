@@ -1,7 +1,7 @@
 "use strict";
 
 // Register GSAP customeease and flip plugin
-gsap.registerPlugin(CustomEase, Flip);
+gsap.registerPlugin(CustomEase);
 CustomEase.create("ease-out-cubic", "0.215,0.61,0.355,1");
 
 CustomEase.create("ease-in-quad", "0.55,0.085,0.68,0.53");
@@ -23,9 +23,9 @@ CustomEase.create("ease-in-out-quint", "0.86,0,0.07,1");
 CustomEase.create("ease-in-out-expo", "1,0,0,1");
 CustomEase.create("ease-in-out-circ", "0.785,0.135,0.15,0.86");
 
-window.addEventListener("DOMContentLoaded", initializeAnimation);
+window.addEventListener("DOMContentLoaded", playAnimationOnPageLoad);
 
-function initializeAnimation() {
+function playAnimationOnPageLoad() {
   const pageloadTl = gsap.timeline();
 
   pageloadTl
@@ -68,8 +68,95 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Toggle Header content button navigation color
+function setListDisplay() {
+  gsap.set(".wrapper__content", { display: "none" });
+}
+
+function setGridDisplay() {
+  gsap.set(".wrapper__content--grid", { display: "none" });
+}
+
+function revealListContent() {
+  const listContentTl = gsap.timeline();
+
+  listContentTl
+    .to(".wrapper__content--grid", {
+      autoAlpha: 0,
+      duration: 0.2,
+      onComplete: setGridDisplay(),
+    })
+    .to(".wrapper__content", {
+      display: "block",
+      autoAlpha: 1,
+      duration: 0.2,
+    })
+    .fromTo(
+      ".content__row",
+      { autoAlpha: 0, yPercent: "50" },
+      {
+        autoAlpha: 1,
+        y: 0,
+        yPercent: 0,
+        stagger: {
+          amount: 1.5,
+        },
+        ease: "Power1.out",
+      }
+    );
+}
+
+function revealGridContent() {
+  const gridContentTl = gsap.timeline();
+
+  gridContentTl
+    .to(".wrapper__content", {
+      autoAlpha: 0,
+      duration: 0.2,
+      onComplete: setListDisplay(),
+    })
+    .to(".wrapper__content--grid", {
+      display: "block",
+      autoAlpha: 1,
+      duration: 0.2,
+    })
+    .fromTo(
+      ".wrapper__content--grid .grid__row .row__item",
+      {
+        yPercent: "30",
+        "--opacity": "1",
+        autoAlpha: 0,
+      },
+      {
+        y: 0,
+        yPercent: 0,
+        "--opacity": "0",
+        autoAlpha: 1,
+        ease: "ease-out-quad",
+        stagger: {
+          amount: 1,
+        },
+      }
+    )
+    .fromTo(
+      ".grid__row .row__item .image img",
+      { scale: 1.2 },
+      {
+        scale: 1,
+        duration: 1,
+        ease: "ease-out-quad",
+      },
+      "<"
+    );
+}
+
+// Toggle Header content button navigation color and list/grid content
 const headerBtns = document.querySelectorAll(".btns__item");
+
+let listButtonClicked = true;
+let gridButtonClicked = false;
+
+const listSectionBtn = document.querySelector(".btns__item--list");
+const gridSectionBtn = document.querySelector(".btns__item--grid");
 
 for (let i = 0; i < headerBtns.length; i++) {
   headerBtns[i].addEventListener("click", function () {
@@ -77,6 +164,19 @@ for (let i = 0; i < headerBtns.length; i++) {
       headerBtns[i].classList.remove("active");
     }
     this.classList.add("active");
+
+    if (!listButtonClicked && listSectionBtn.classList.contains("active")) {
+      revealListContent();
+      listButtonClicked = true;
+      gridButtonClicked = false;
+    } else if (
+      !gridButtonClicked &&
+      gridSectionBtn.classList.contains("active")
+    ) {
+      revealGridContent();
+      gridButtonClicked = true;
+      listButtonClicked = false;
+    }
   });
 }
 
