@@ -1,6 +1,6 @@
-<!-- # Jen Grisowold Personal Website
+# Serene Studio Works Page Exploration
 
-Development of a conceptual animation for the personal website of digital content creator Jen Griswold.
+Development of a conceptual animation for the works page of Serene Studio
 Design & Motion by [Alex Tkachev](https://twitter.com/simply_aalex).
 
 ## Table of contents
@@ -24,7 +24,7 @@ Design & Motion by [Alex Tkachev](https://twitter.com/simply_aalex).
 
 ### Approach
 
-Feel free to review the code for a more detailed understanding of my approach, as I have simplified it as much as possible.
+Please feel free to review the code for a more detailed understanding of my approach, as I have simplified it as much as possible.
 
 ## Author
 
@@ -33,4 +33,4 @@ Feel free to review the code for a more detailed understanding of my approach, a
 
 ## Credit
 
-Huge credits goes to [Alex Tkachev](https://twitter.com/simply_aalex)🙌 who created the original design and motion which I have coded. -->
+Huge credits goes to [Alex Tkachev](https://twitter.com/simply_aalex)🙌 who created the original design and motion which I have coded.
